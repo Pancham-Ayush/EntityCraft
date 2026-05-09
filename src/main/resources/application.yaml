@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: EntityCraft
+  datasource:
+    url: jdbc:mysql://localhost:3306/entitycraft
+    username: root
+    password: root123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+springdoc:
+  swagger-ui:
+    path: "/swagger"

@@ -6,24 +6,26 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+@EntityListeners(AuditingEntityListener.class)
+
+public class Tenant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(unique = true)
-    private String tenentName;
+    private String dbName;
 
     @Email
     private String email;
@@ -32,8 +34,6 @@ public class User {
     @CreatedDate
     private LocalDate dateOfCreation;
 
-    @PrePersist
-    public void prePersist() {
-        dateOfCreation = LocalDate.now();
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tenant")
+    private List<ObjectTable> objectTableList;
 }

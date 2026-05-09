@@ -1,6 +1,6 @@
 package com.example.EntityCraft.Service;
 
-import com.example.EntityCraft.Entity.User;
+import com.example.EntityCraft.Entity.Tenant;
 import com.example.EntityCraft.Repo.UserRepo;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class UserService
         this.userRepo = userRepo;
     }
 
-    public User createUser(User user)
+    public Tenant createUser(Tenant user)
     {
         return userRepo.save(user);
     }

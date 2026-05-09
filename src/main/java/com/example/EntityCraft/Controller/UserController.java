@@ -1,9 +1,7 @@
 package com.example.EntityCraft.Controller;
 
-import com.example.EntityCraft.Entity.User;
-import com.example.EntityCraft.Repo.UserRepo;
+import com.example.EntityCraft.Entity.Tenant;
 import com.example.EntityCraft.Service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,16 +16,16 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(
+    public Tenant createUser(
 
-            @RequestParam(required = false) String tenantName,
+            @RequestParam(required = false) String dbName,
             @RequestParam String email
 
     ) {
 
-        User user = new User();
+        Tenant user = new Tenant();
 
-        user.setTenentName(tenantName);
+        user.setDbName(dbName);
         user.setEmail(email);
 
         return userService.createUser(user);
