@@ -15,8 +15,13 @@ public class UserService
         this.userRepo = userRepo;
     }
 
-    public Tenant createUser(Tenant user)
+    public Tenant saveTenant(Tenant user)
     {
         return userRepo.save(user);
+    }
+
+    public Tenant findById(Long tenantId)
+    {
+        return userRepo.findById(tenantId).get();
     }
 }
